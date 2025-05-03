@@ -1,0 +1,42 @@
+<ROSETTASCRIPTS>
+    <SCOREFXNS>
+        <ScoreFunction name="ref2015" weights="ref2015"/>
+        <ScoreFunction name="ref2015_cart" weights="ref2015_cart"/>
+    </SCOREFXNS>
+    
+    <RESIDUE_SELECTORS>
+        <Chain name="ligand_selector" chains="X"/> 
+        <Neighborhood name="binding_site" selector="ligand_selector" distance="8.0"/>
+        <And name="binding_site_protein" selectors="binding_site">
+            <ResidueProperty property="PROTEIN"/>
+        </And>
+    </RESIDUE_SELECTORS>
+    
+    <MOVERS>
+        <!-- <MgHydrater name="mg_hydrater"/> -->
+        
+        <GALigandDock name="ga_dock"
+                      scorefxn="ref2015"
+                      scorefxn_relax="ref2015_cart"
+                      ligand="X"
+                      sidechains="binding_site_protein"
+                      runmode="dockflex"
+                      nrelax="20"
+                      nreport="10"
+                      premin_ligand="true"
+                      cartmin_lig="true"
+                      optimize_input_H="true"
+                      final_exact_minimize="bbsc1"
+                      use_pharmacophore="true"
+                      grid_step="0.25"
+                      padding="4.0"
+                      estimate_dG="true"/>
+    </MOVERS>
+    
+    <PROTOCOLS>
+        <Add mover="mg_hydrater"/>
+        <Add mover="ga_dock"/>
+    </PROTOCOLS>
+    
+    <OUTPUT scorefxn="ref2015_cart"/>
+</ROSETTASCRIPTS>

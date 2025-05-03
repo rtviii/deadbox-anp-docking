@@ -1,0 +1,48 @@
+<ROSETTASCRIPTS>
+    <SCOREFXNS>
+        <ScoreFunction name="ref2015" weights="beta_genpot"/>
+        <ScoreFunction name="ref2015_cart" weights="beta_genpot"/>
+    </SCOREFXNS>
+
+    <RESIDUE_SELECTORS>
+        <ResidueName name="ligand_res" residue_name3="ANP"/>
+
+        <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+
+        <ResidueName name="mg_ion" residue_name3="MG"/>
+
+    </RESIDUE_SELECTORS>
+
+    <TASKOPERATIONS>
+        <InitializeFromCommandline name="init"/>
+        <RestrictToRepacking name="repack_only"/>
+        <IncludeCurrent name="ic"/>
+
+    </TASKOPERATIONS>
+
+    <MOVERS>
+
+        <GALigandDock name="ga_dock"
+                scorefxn="ref2015"               
+                scorefxn_relax="ref2015_cart"
+                reference_pool="INPUT"
+                nrelax="20"                     
+                nreport="10"            
+                premin_ligand="true"            
+                cartmin_lig="true"       
+                final_exact_minimize="bbsc"     
+                optimize_input_H="true"  
+                sample_ring_conformers="true" 
+                use_pharmacophore="true"        
+                grid_step="0.25"         
+                padding="4.0"
+        />
+    </MOVERS>
+
+    <PROTOCOLS>
+        <Add mover="ga_dock"/>
+    </PROTOCOLS>
+
+    <OUTPUT scorefxn="ref2015_cart" /> 
+
+</ROSETTASCRIPTS>

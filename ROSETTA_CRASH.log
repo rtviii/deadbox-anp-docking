@@ -1,0 +1,2525 @@
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=combined.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x00000001097d3fb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x00000001097f3d6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x00000001097d7990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x00000001097d7834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libcore.5.dylib                     0x0000000108d5c070 core::pack::rotamers::SingleLigandRotamerLibrary::init_from_file(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, core::chemical::ResidueType const&) + 968
+5   libcore.5.dylib                     0x0000000108d60ff8 core::pack::rotamers::SingleLigandRotamerLibraryCreator::create(core::chemical::ResidueType const&) const + 536
+6   libcore.5.dylib                     0x0000000108d693e0 core::pack::rotamers::SingleResidueRotamerLibraryFactory::get(core::chemical::ResidueType const&, bool) const + 720
+7   libcore.5.dylib                     0x00000001089e2c28 core::pack::dunbrack::DunbrackEnergy::residue_energy(core::conformation::Residue const&, core::pose::Pose const&, core::scoring::EMapVector&) const + 100
+8   libcore.3.dylib                     0x000000010abd4ae4 core::scoring::ScoreFunction::asym_eval_onebody_energies(core::pose::Pose&) const + 344
+9   libcore.3.dylib                     0x000000010abd03a8 core::scoring::ScoreFunction::operator()(core::pose::Pose&) const + 492
+10  libcore.5.dylib                     0x00000001089aa308 core::pack::pack_missing_sidechains(core::pose::Pose&, core::id::AtomID_Map<bool> const&) + 152
+11  libcore.6.dylib                     0x00000001052862a0 core::import_pose::build_pose_as_is2(std::__1::shared_ptr<core::io::StructFileRep const>, core::pose::Pose&, core::chemical::ResidueTypeSet const&, core::id::AtomID_Map<bool>&, core::import_pose::ImportPoseOptions const&) + 548
+12  libcore.6.dylib                     0x0000000105285f6c core::import_pose::build_pose_as_is(std::__1::shared_ptr<core::io::StructFileRep>, core::pose::Pose&, core::chemical::ResidueTypeSet const&, core::import_pose::ImportPoseOptions const&) + 264
+13  libcore.6.dylib                     0x0000000105283e54 core::import_pose::build_pose(std::__1::shared_ptr<core::io::StructFileRep>, core::pose::Pose&, core::chemical::ResidueTypeSet const&, core::import_pose::ImportPoseOptions const&) + 228
+14  libcore.6.dylib                     0x00000001052838a0 core::import_pose::pose_from_file(core::pose::Pose&, core::chemical::ResidueTypeSet const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, core::import_pose::ImportPoseOptions const&, bool, core::import_pose::FileType) + 2360
+15  libcore.6.dylib                     0x0000000105282384 core::import_pose::pose_from_file(core::pose::Pose&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, core::import_pose::ImportPoseOptions const&, bool, core::import_pose::FileType) + 124
+16  libcore.6.dylib                     0x00000001052813bc core::import_pose::pose_from_file(core::pose::Pose&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool, core::import_pose::FileType) + 72
+17  libprotocols.1.dylib                0x00000001063d2788 protocols::jd2::PDBJobInputter::pose_from_job(core::pose::Pose&, std::__1::shared_ptr<protocols::jd2::Job>) + 1924
+18  libprotocols.1.dylib                0x00000001063b5df8 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 1356
+19  libprotocols.1.dylib                0x00000001063b4ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+20  libprotocols.1.dylib                0x00000001063af96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+21  rosetta_scripts.default.macosclangr 0x0000000100e8ea7c main + 1316
+22  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/core/pack/rotamers/SingleLigandRotamerLibrary.cc
+[LINE]: 109
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: PDB Rotamers file 'ANP_conformers.pdb' does not contain any usable rotamers!.
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=combined.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010cf3bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010cf5bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x000000010a083aa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x000000010a081bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x000000010a080100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x000000010a07fc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x000000010a08585c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x0000000109de2b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x0000000109de0ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x0000000109ddb96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x00000001047c2a7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "combined.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 11:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 6:     
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <Chain name="ligand_selector" chains="X"/> 
+ 9:         <Neighborhood name="binding_site" selector="ligand_selector" distance="8.0"/>
+10:         <And name="binding_site_protein" selectors="binding_site">
+11:             <ResidueProperty property="PROTEIN"/>
+12:         </And>
+13:     </RESIDUE_SELECTORS>
+14:     
+15:     <MOVERS>
+16:         <MgHydrater name="mg_hydrater"/>
+From line 16:
+Error: Element 'MgHydrater': This element is not expected. Expected is one of ( AbscriptLoopCloserCM, AbscriptMover, AcceptToBestMover, AddChain, AddChainBreak, AddCompositionConstraintMover, AddConstraints, AddConstraintsToCurrentConformationMover, AddFlankingVirtualResiduesMover, AddHelixSequenceConstraints ).
+
+11:             <ResidueProperty property="PROTEIN"/>
+12:         </And>
+13:     </RESIDUE_SELECTORS>
+14:     
+15:     <MOVERS>
+16:         <MgHydrater name="mg_hydrater"/>
+17:         
+18:         <GALigandDock name="ga_dock"
+19:                       scorefxn="ref2015"
+20:                       scorefxn_relax="ref2015_cart"
+21:                       ligand="X"
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=combined.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x00000001096b7fb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x00000001096d7d6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x000000010653baa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000106539bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000106538100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x0000000106537c2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x000000010653d85c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010629ab24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x0000000106298ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010629396c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000100d5aa7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "combined.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 11:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 6:     
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <Chain name="ligand_selector" chains="X"/> 
+ 9:         <Neighborhood name="binding_site" selector="ligand_selector" distance="8.0"/>
+10:         <And name="binding_site_protein" selectors="binding_site">
+11:             <ResidueProperty property="PROTEIN"/>
+12:         </And>
+13:     </RESIDUE_SELECTORS>
+14:     
+15:     <MOVERS>
+16:         <!-- <MgHydrater name="mg_hydrater"/> -->
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010d4f7fb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010d517d6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x000000010a37baa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x000000010a379bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x000000010a378100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x000000010a377c2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x000000010a37d85c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010a0dab24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x000000010a0d8ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010a0d396c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000104b4aa7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+Error: error parsing attribute name
+
+37: 
+38:         <GALigandDock name="ga_dock"
+39:                 scorefxn="ref2015"               scorefxn_relax="ref2015_cart"
+40:                 ligand_selector="ligand_res"    movable_selector="binding_site_protein"
+41:                 task_operations="docking_task"
+42:                 ncycles_dock="50"               ncycles_relax="5"        # Number of GA generations and relax cycles
+43:                 nrelax="20"                     nreport="10"             # Number of structures to relax fully and report
+44:                 premin_ligand="true"            cartmin_lig="true"       # Crucial for metal coordination
+45:                 final_exact_minimize="bbsc"     optimize_input_H="true"  # Minimize BB, SC, ligand post-docking; optimize H
+46:                 use_conformers="false"          sample_ring_conformers="true" # Let GA sample internal coords; sample rings if defined in params
+47:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+Error: attributes construct error
+
+37: 
+38:         <GALigandDock name="ga_dock"
+39:                 scorefxn="ref2015"               scorefxn_relax="ref2015_cart"
+40:                 ligand_selector="ligand_res"    movable_selector="binding_site_protein"
+41:                 task_operations="docking_task"
+42:                 ncycles_dock="50"               ncycles_relax="5"        # Number of GA generations and relax cycles
+43:                 nrelax="20"                     nreport="10"             # Number of structures to relax fully and report
+44:                 premin_ligand="true"            cartmin_lig="true"       # Crucial for metal coordination
+45:                 final_exact_minimize="bbsc"     optimize_input_H="true"  # Minimize BB, SC, ligand post-docking; optimize H
+46:                 use_conformers="false"          sample_ring_conformers="true" # Let GA sample internal coords; sample rings if defined in params
+47:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+Error: Couldn't find end of Start Tag GALigandDock line 38
+
+37: 
+38:         <GALigandDock name="ga_dock"
+39:                 scorefxn="ref2015"               scorefxn_relax="ref2015_cart"
+40:                 ligand_selector="ligand_res"    movable_selector="binding_site_protein"
+41:                 task_operations="docking_task"
+42:                 ncycles_dock="50"               ncycles_relax="5"        # Number of GA generations and relax cycles
+43:                 nrelax="20"                     nreport="10"             # Number of structures to relax fully and report
+44:                 premin_ligand="true"            cartmin_lig="true"       # Crucial for metal coordination
+45:                 final_exact_minimize="bbsc"     optimize_input_H="true"  # Minimize BB, SC, ligand post-docking; optimize H
+46:                 use_conformers="false"          sample_ring_conformers="true" # Let GA sample internal coords; sample rings if defined in params
+47:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010ad2ffb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010ad4fd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x0000000107bb3aa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000107bb1bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000107bb0100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x0000000107bafc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x0000000107bb585c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x0000000107912b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x0000000107910ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010790b96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x000000010242aa7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 36:
+Error: Element 'MgHydrater': This element is not expected. Expected is one of ( AbscriptLoopCloserCM, AbscriptMover, AcceptToBestMover, AddChain, AddChainBreak, AddCompositionConstraintMover, AddConstraints, AddConstraintsToCurrentConformationMover, AddFlankingVirtualResiduesMover, AddHelixSequenceConstraints ).
+
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+34: 
+35:     <MOVERS>
+36:         <MgHydrater name="mg_hydrater" residue_selector="mg_ion"/>
+37: 
+38:         <GALigandDock name="ga_dock"
+39:                 scorefxn="ref2015"               scorefxn_relax="ref2015_cart"
+40:                 ligand_selector="ligand_res"    movable_selector="binding_site_protein"
+41:                 task_operations="docking_task"
+From line 58:
+Error: Element 'OUTPUT', attribute 'filename_pattern': The attribute 'filename_pattern' is not allowed.
+
+53:     <PROTOCOLS>
+54:         <Add mover="mg_hydrater"/>
+55:         <Add mover="ga_dock"/>
+56:     </PROTOCOLS>
+57: 
+58:     <OUTPUT scorefxn="ref2015_cart" filename_pattern="anp_docked_$N.pdb"/> </ROSETTASCRIPTS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010d6d3fb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010d6f3d6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x000000010a557aa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x000000010a555bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x000000010a554100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x000000010a553c2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x000000010a55985c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010a2b6b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x000000010a2b4ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010a2af96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000104caaa7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 36:
+Error: Element 'MgHydrater': This element is not expected. Expected is one of ( AbscriptLoopCloserCM, AbscriptMover, AcceptToBestMover, AddChain, AddChainBreak, AddCompositionConstraintMover, AddConstraints, AddConstraintsToCurrentConformationMover, AddFlankingVirtualResiduesMover, AddHelixSequenceConstraints ).
+
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+34: 
+35:     <MOVERS>
+36:         <MgHydrater name="mg_hydrater" residue_selector="mg_ion"/>
+37: 
+38:         <GALigandDock name="ga_dock"
+39:                 scorefxn="ref2015"               scorefxn_relax="ref2015_cart"
+40:                 ligand_selector="ligand_res"    movable_selector="binding_site_protein"
+41:                 task_operations="docking_task"
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010cbb7fb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010cbd7d6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x0000000109a3baa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000109a39bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000109a38100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x0000000109a37c2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x0000000109a3d85c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010979ab24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x0000000109798ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010979396c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x00000001041aaa7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 49:
+Error: Element 'GALigandDock', attribute 'ligand_selector': The attribute 'ligand_selector' is not allowed.
+
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:                 ligand_flexible="true"          
+49:         />
+50:     </MOVERS>
+51: 
+52:     <PROTOCOLS>
+53:         <Add mover="ga_dock"/>
+54:     </PROTOCOLS>
+From line 49:
+Error: Element 'GALigandDock', attribute 'movable_selector': The attribute 'movable_selector' is not allowed.
+
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:                 ligand_flexible="true"          
+49:         />
+50:     </MOVERS>
+51: 
+52:     <PROTOCOLS>
+53:         <Add mover="ga_dock"/>
+54:     </PROTOCOLS>
+From line 49:
+Error: Element 'GALigandDock', attribute 'task_operations': The attribute 'task_operations' is not allowed.
+
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:                 ligand_flexible="true"          
+49:         />
+50:     </MOVERS>
+51: 
+52:     <PROTOCOLS>
+53:         <Add mover="ga_dock"/>
+54:     </PROTOCOLS>
+From line 49:
+Error: Element 'GALigandDock', attribute 'ncycles_dock': The attribute 'ncycles_dock' is not allowed.
+
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:                 ligand_flexible="true"          
+49:         />
+50:     </MOVERS>
+51: 
+52:     <PROTOCOLS>
+53:         <Add mover="ga_dock"/>
+54:     </PROTOCOLS>
+From line 49:
+Error: Element 'GALigandDock', attribute 'ncycles_relax': The attribute 'ncycles_relax' is not allowed.
+
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:                 ligand_flexible="true"          
+49:         />
+50:     </MOVERS>
+51: 
+52:     <PROTOCOLS>
+53:         <Add mover="ga_dock"/>
+54:     </PROTOCOLS>
+From line 49:
+Error: Element 'GALigandDock', attribute 'use_conformers': The attribute 'use_conformers' is not allowed.
+
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:                 ligand_flexible="true"          
+49:         />
+50:     </MOVERS>
+51: 
+52:     <PROTOCOLS>
+53:         <Add mover="ga_dock"/>
+54:     </PROTOCOLS>
+From line 49:
+Error: Element 'GALigandDock', attribute 'quick_relax_rounds': The attribute 'quick_relax_rounds' is not allowed.
+
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:                 ligand_flexible="true"          
+49:         />
+50:     </MOVERS>
+51: 
+52:     <PROTOCOLS>
+53:         <Add mover="ga_dock"/>
+54:     </PROTOCOLS>
+From line 49:
+Error: Element 'GALigandDock', attribute 'ligand_flexible': The attribute 'ligand_flexible' is not allowed.
+
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:                 ligand_flexible="true"          
+49:         />
+50:     </MOVERS>
+51: 
+52:     <PROTOCOLS>
+53:         <Add mover="ga_dock"/>
+54:     </PROTOCOLS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010b3c3fb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010b3e3d6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x0000000108247aa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000108245bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000108244100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x0000000108243c2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x000000010824985c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x0000000107fa6b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x0000000107fa4ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x0000000107f9f96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000102a26a7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 48:
+Error: Element 'GALigandDock', attribute 'ligand_selector': The attribute 'ligand_selector' is not allowed.
+
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:         />
+49:     </MOVERS>
+50: 
+51:     <PROTOCOLS>
+52:         <Add mover="ga_dock"/>
+53:     </PROTOCOLS>
+From line 48:
+Error: Element 'GALigandDock', attribute 'movable_selector': The attribute 'movable_selector' is not allowed.
+
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:         />
+49:     </MOVERS>
+50: 
+51:     <PROTOCOLS>
+52:         <Add mover="ga_dock"/>
+53:     </PROTOCOLS>
+From line 48:
+Error: Element 'GALigandDock', attribute 'task_operations': The attribute 'task_operations' is not allowed.
+
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:         />
+49:     </MOVERS>
+50: 
+51:     <PROTOCOLS>
+52:         <Add mover="ga_dock"/>
+53:     </PROTOCOLS>
+From line 48:
+Error: Element 'GALigandDock', attribute 'ncycles_dock': The attribute 'ncycles_dock' is not allowed.
+
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:         />
+49:     </MOVERS>
+50: 
+51:     <PROTOCOLS>
+52:         <Add mover="ga_dock"/>
+53:     </PROTOCOLS>
+From line 48:
+Error: Element 'GALigandDock', attribute 'ncycles_relax': The attribute 'ncycles_relax' is not allowed.
+
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:         />
+49:     </MOVERS>
+50: 
+51:     <PROTOCOLS>
+52:         <Add mover="ga_dock"/>
+53:     </PROTOCOLS>
+From line 48:
+Error: Element 'GALigandDock', attribute 'use_conformers': The attribute 'use_conformers' is not allowed.
+
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:         />
+49:     </MOVERS>
+50: 
+51:     <PROTOCOLS>
+52:         <Add mover="ga_dock"/>
+53:     </PROTOCOLS>
+From line 48:
+Error: Element 'GALigandDock', attribute 'quick_relax_rounds': The attribute 'quick_relax_rounds' is not allowed.
+
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:                 quick_relax_rounds="3"
+48:         />
+49:     </MOVERS>
+50: 
+51:     <PROTOCOLS>
+52:         <Add mover="ga_dock"/>
+53:     </PROTOCOLS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010aa2bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010aa4bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x00000001078afaa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x00000001078adbcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x00000001078ac100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x00000001078abc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x00000001078b185c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010760eb24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x000000010760cac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010760796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000102062a7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'ligand_selector': The attribute 'ligand_selector' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'movable_selector': The attribute 'movable_selector' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'task_operations': The attribute 'task_operations' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'ncycles_dock': The attribute 'ncycles_dock' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'ncycles_relax': The attribute 'ncycles_relax' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'use_conformers': The attribute 'use_conformers' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                 use_conformers="false"          sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010cc4bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010cc6bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x0000000109acfaa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000109acdbcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000109acc100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x0000000109acbc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x0000000109ad185c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010982eb24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x000000010982cac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010982796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000104226a7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'ligand_selector': The attribute 'ligand_selector' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                           sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'movable_selector': The attribute 'movable_selector' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                           sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'task_operations': The attribute 'task_operations' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                           sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'ncycles_dock': The attribute 'ncycles_dock' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                           sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+From line 47:
+Error: Element 'GALigandDock', attribute 'ncycles_relax': The attribute 'ncycles_relax' is not allowed.
+
+42:                 nrelax="20"                     nreport="10"            
+43:                 premin_ligand="true"            cartmin_lig="true"       
+44:                 final_exact_minimize="bbsc"     optimize_input_H="true"  
+45:                           sample_ring_conformers="true" 
+46:                 use_pharmacophore="true"        grid_step="0.25"         padding="4.0"
+47:         />
+48:     </MOVERS>
+49: 
+50:     <PROTOCOLS>
+51:         <Add mover="ga_dock"/>
+52:     </PROTOCOLS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x00000001089affb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x00000001089cfd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x0000000108563aa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000108561bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000108560100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x000000010855fc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x000000010856585c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x00000001082c2b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x00000001082c0ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x00000001082bb96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000102ab6a7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 54:
+Error: Element 'GALigandDock', attribute 'ligand_selector': The attribute 'ligand_selector' is not allowed.
+
+49:                 optimize_input_H="true"  
+50:                           sample_ring_conformers="true" 
+51:                 use_pharmacophore="true"        
+52:                 grid_step="0.25"         
+53:                 padding="4.0"
+54:         />
+55:     </MOVERS>
+56: 
+57:     <PROTOCOLS>
+58:         <Add mover="ga_dock"/>
+59:     </PROTOCOLS>
+From line 54:
+Error: Element 'GALigandDock', attribute 'movable_selector': The attribute 'movable_selector' is not allowed.
+
+49:                 optimize_input_H="true"  
+50:                           sample_ring_conformers="true" 
+51:                 use_pharmacophore="true"        
+52:                 grid_step="0.25"         
+53:                 padding="4.0"
+54:         />
+55:     </MOVERS>
+56: 
+57:     <PROTOCOLS>
+58:         <Add mover="ga_dock"/>
+59:     </PROTOCOLS>
+From line 54:
+Error: Element 'GALigandDock', attribute 'task_operations': The attribute 'task_operations' is not allowed.
+
+49:                 optimize_input_H="true"  
+50:                           sample_ring_conformers="true" 
+51:                 use_pharmacophore="true"        
+52:                 grid_step="0.25"         
+53:                 padding="4.0"
+54:         />
+55:     </MOVERS>
+56: 
+57:     <PROTOCOLS>
+58:         <Add mover="ga_dock"/>
+59:     </PROTOCOLS>
+From line 54:
+Error: Element 'GALigandDock', attribute 'ncycles_dock': The attribute 'ncycles_dock' is not allowed.
+
+49:                 optimize_input_H="true"  
+50:                           sample_ring_conformers="true" 
+51:                 use_pharmacophore="true"        
+52:                 grid_step="0.25"         
+53:                 padding="4.0"
+54:         />
+55:     </MOVERS>
+56: 
+57:     <PROTOCOLS>
+58:         <Add mover="ga_dock"/>
+59:     </PROTOCOLS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010cb2ffb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010cb4fd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x0000000109c77aa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000109c75bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000109c74100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x0000000109c73c2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x0000000109c7985c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x00000001099d6b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x00000001099d4ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x00000001099cf96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x00000001043b2a7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 53:
+Error: Element 'GALigandDock', attribute 'ligand_selector': The attribute 'ligand_selector' is not allowed.
+
+48:                 optimize_input_H="true"  
+49:                           sample_ring_conformers="true" 
+50:                 use_pharmacophore="true"        
+51:                 grid_step="0.25"         
+52:                 padding="4.0"
+53:         />
+54:     </MOVERS>
+55: 
+56:     <PROTOCOLS>
+57:         <Add mover="ga_dock"/>
+58:     </PROTOCOLS>
+From line 53:
+Error: Element 'GALigandDock', attribute 'movable_selector': The attribute 'movable_selector' is not allowed.
+
+48:                 optimize_input_H="true"  
+49:                           sample_ring_conformers="true" 
+50:                 use_pharmacophore="true"        
+51:                 grid_step="0.25"         
+52:                 padding="4.0"
+53:         />
+54:     </MOVERS>
+55: 
+56:     <PROTOCOLS>
+57:         <Add mover="ga_dock"/>
+58:     </PROTOCOLS>
+From line 53:
+Error: Element 'GALigandDock', attribute 'task_operations': The attribute 'task_operations' is not allowed.
+
+48:                 optimize_input_H="true"  
+49:                           sample_ring_conformers="true" 
+50:                 use_pharmacophore="true"        
+51:                 grid_step="0.25"         
+52:                 padding="4.0"
+53:         />
+54:     </MOVERS>
+55: 
+56:     <PROTOCOLS>
+57:         <Add mover="ga_dock"/>
+58:     </PROTOCOLS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x0000000106b3bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x0000000106b5bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x00000001066efaa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x00000001066edbcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x00000001066ec100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x00000001066ebc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x00000001066f185c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010644eb24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x000000010644cac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010644796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000100c42a7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 52:
+Error: Element 'GALigandDock', attribute 'ligand_selector': The attribute 'ligand_selector' is not allowed.
+
+47:                 optimize_input_H="true"  
+48:                           sample_ring_conformers="true" 
+49:                 use_pharmacophore="true"        
+50:                 grid_step="0.25"         
+51:                 padding="4.0"
+52:         />
+53:     </MOVERS>
+54: 
+55:     <PROTOCOLS>
+56:         <Add mover="ga_dock"/>
+57:     </PROTOCOLS>
+From line 52:
+Error: Element 'GALigandDock', attribute 'movable_selector': The attribute 'movable_selector' is not allowed.
+
+47:                 optimize_input_H="true"  
+48:                           sample_ring_conformers="true" 
+49:                 use_pharmacophore="true"        
+50:                 grid_step="0.25"         
+51:                 padding="4.0"
+52:         />
+53:     </MOVERS>
+54: 
+55:     <PROTOCOLS>
+56:         <Add mover="ga_dock"/>
+57:     </PROTOCOLS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x0000000108e4ffb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x0000000108e6fd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x0000000105cd3aa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000105cd1bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000105cd0100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x0000000105ccfc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x0000000105cd585c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x0000000105a32b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x0000000105a30ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x0000000105a2b96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000100456a7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+From line 51:
+Error: Element 'GALigandDock', attribute 'ligand_selector': The attribute 'ligand_selector' is not allowed.
+
+46:                 optimize_input_H="true"  
+47:                           sample_ring_conformers="true" 
+48:                 use_pharmacophore="true"        
+49:                 grid_step="0.25"         
+50:                 padding="4.0"
+51:         />
+52:     </MOVERS>
+53: 
+54:     <PROTOCOLS>
+55:         <Add mover="ga_dock"/>
+56:     </PROTOCOLS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010d3fbfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010d41bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x000000010a543aa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x000000010a541bcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x000000010a540100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x000000010a53fc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x000000010a54585c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010a2a2b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x000000010a2a0ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010a29b96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x0000000104c5aa7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+From line 28:
+Error: Element 'CompoundTaskOperation': This element is not expected.
+
+23:             <RestrictToRepackingRLT/> </OperateOnResidueSubset>
+24:         <OperateOnResidueSubset name="prevent_repacking_mg" selector="mg_ion" >
+25:             <PreventRepackingRLT/> </OperateOnResidueSubset>
+26:         <IncludeCurrent name="ic"/>
+27: 
+28:         <CompoundTaskOperation name="docking_task">
+29:             <TaskOP name="init"/>
+30:             <TaskOP name="repack_only"/> <TaskOP name="restrict_to_binding_site"/>
+31:             <TaskOP name="prevent_repacking_mg"/>
+32:             <TaskOP name="ic"/> </CompoundTaskOperation>
+33:     </TASKOPERATIONS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x00000001089f7fb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x0000000108a17d6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libprotocols.1.dylib                0x0000000105b3faa0 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2308
+3   libprotocols.1.dylib                0x0000000105b3dbcc protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 272
+4   libprotocols.1.dylib                0x0000000105b3c100 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 256
+5   libprotocols.1.dylib                0x0000000105b3bc2c protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 300
+6   libprotocols.1.dylib                0x0000000105b4185c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 412
+7   libprotocols.1.dylib                0x000000010589eb24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+8   libprotocols.1.dylib                0x000000010589cac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+9   libprotocols.1.dylib                0x000000010589796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+10  rosetta_scripts.default.macosclangr 0x00000001002baa7c main + 1316
+11  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "script_gemini.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+From line 12:
+Error: Element 'ResidueProperty': This element is not expected. Expected is one of ( And, AntibodyRegion, AsymmetricUnitSelector, BFactorSelector, Bin, BlockSelector, Bonded, CDR, Chain, ClashBasedShell ).
+
+ 7:     <RESIDUE_SELECTORS>
+ 8:         <ResidueName name="ligand_res" residue_name3="ANP"/>
+ 9: 
+10:         <Neighborhood name="binding_site_neighbors" selector="ligand_res" distance="8.0"/>
+11:         <And name="binding_site_protein" selectors="binding_site_neighbors">
+12:             <ResidueProperty property="PROTEIN"/>
+13:         </And>
+14: 
+15:         <ResidueName name="mg_ion" residue_name3="MG"/>
+16: 
+17:     </RESIDUE_SELECTORS>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010874bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010876bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x000000010874f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x000000010874f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x0000000104a5bd48 utility::exit(char const*, int, int) + 36
+5   libprotocols_h.5.dylib              0x0000000104bec508 protocols::ligand_docking::ga_ligand_dock::GridScorer::calculate_grid(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&) + 24468
+6   libprotocols_h.5.dylib              0x0000000104c1bd00 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 9852
+7   libprotocols.1.dylib                0x00000001082eed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+8   libprotocols.1.dylib                0x00000001082e8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+9   libprotocols.1.dylib                0x000000010805f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+10  libprotocols.1.dylib                0x000000010805cb04 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 188
+11  libprotocols.1.dylib                0x000000010805796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x00000001028f2a7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GridScorer.cc
+[LINE]: 439
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: 
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x0000000108f5ffb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x0000000108f7fd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x0000000108f63990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x0000000108f63834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libcore.3.dylib                     0x0000000109de2990 core::scoring::ScoreFunctionFactory::validate_beta(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 2368
+5   libcore.3.dylib                     0x0000000109de2f00 core::scoring::ScoreFunctionFactory::load_score_function_from_disk(utility::options::OptionCollection const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 1004
+6   libcore.3.dylib                     0x0000000109de3548 std::__1::shared_ptr<core::scoring::ScoreFunction> utility::thread::safely_check_map_for_key_and_insert_if_absent<core::scoring::ScoreFunction, core::scoring::ScoreFunctionKey>(std::__1::function<std::__1::shared_ptr<core::scoring::ScoreFunction> ()>, bool, core::scoring::ScoreFunctionKey const&, std::__1::map<core::scoring::ScoreFunctionKey, std::__1::shared_ptr<core::scoring::ScoreFunction>, std::__1::less<core::scoring::ScoreFunctionKey>, std::__1::allocator<std::__1::pair<core::scoring::ScoreFunctionKey const, std::__1::shared_ptr<core::scoring::ScoreFunction>>>>&) + 152
+7   libcore.3.dylib                     0x0000000109de1598 core::scoring::ScoreFunctionFactory::create_score_function_nonstatic(utility::options::OptionCollection const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 584
+8   libcore.3.dylib                     0x0000000109de1114 core::scoring::ScoreFunctionFactory::create_score_function(utility::options::OptionCollection const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 76
+9   libprotocols.1.dylib                0x0000000106069594 protocols::parser::ScoreFunctionLoader::create_scorefxn_from_tag(std::__1::shared_ptr<utility::tag::Tag const>) + 1456
+10  libprotocols.1.dylib                0x0000000106068c98 protocols::parser::ScoreFunctionLoader::load_data(std::__1::shared_ptr<utility::tag::Tag const>, basic::datacache::DataMap&) const + 152
+11  libprotocols.1.dylib                0x00000001060aa548 protocols::rosetta_scripts::RosettaScriptsParser::generate_mover_for_protocol(std::__1::shared_ptr<utility::tag::Tag const>, basic::datacache::DataMap&, utility::options::OptionCollection const&, std::__1::shared_ptr<protocols::rosetta_scripts::XmlObjects>, std::__1::shared_ptr<basic::resource_manager::ResourceManager>) + 1092
+12  libprotocols.1.dylib                0x00000001060a9f3c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover_for_protocol(std::__1::shared_ptr<utility::tag::Tag const>, utility::options::OptionCollection const&, basic::datacache::DataMap&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::shared_ptr<protocols::rosetta_scripts::XmlObjects>, std::__1::shared_ptr<basic::resource_manager::ResourceManager>) + 964
+13  libprotocols.1.dylib                0x00000001060a3df4 protocols::rosetta_scripts::RosettaScriptsParser::generate_mover_for_protocol(std::__1::shared_ptr<utility::tag::Tag const>, utility::options::OptionCollection const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::shared_ptr<protocols::rosetta_scripts::XmlObjects>, std::__1::shared_ptr<basic::resource_manager::ResourceManager>) + 180
+14  libprotocols.1.dylib                0x00000001060a98a4 protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 484
+15  libprotocols.1.dylib                0x0000000105e06b24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+16  libprotocols.1.dylib                0x0000000105e04ac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+17  libprotocols.1.dylib                0x0000000105dff96c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+18  rosetta_scripts.default.macosclangr 0x00000001007d2a7c main + 1316
+19  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/core/scoring/ScoreFunctionFactory.cc
+[LINE]: 170
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: beta_genpot(.wts) requested, but -corrections::gen_potential not set to true. This leads to a garbage scorefunction.  Exiting.
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml -corrections:gen_potential
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x0000000108d8bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x0000000108dabd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libutility.dylib                    0x0000000108d8f990 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 112
+3   libutility.dylib                    0x0000000108d8f834 utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 60
+4   libprotocols_h.5.dylib              0x000000010286f238 protocols::ligand_docking::ga_ligand_dock::GALigandDock::setup_ligand_aligner(core::pose::Pose const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>> const&, utility::vector1<unsigned long, std::__1::allocator<unsigned long>>, utility::vector1<core::conformation::Residue, std::__1::allocator<core::conformation::Residue>> const&, utility::vector1<bool, std::__1::allocator<bool>> const&) const + 1412
+5   libprotocols_h.5.dylib              0x0000000102867e70 protocols::ligand_docking::ga_ligand_dock::GALigandDock::apply(core::pose::Pose&) + 10220
+6   libprotocols.1.dylib                0x0000000105bfed78 protocols::rosetta_scripts::ParsedProtocol::apply_mover(core::pose::Pose&, protocols::rosetta_scripts::ParsedProtocol::ParsedProtocolStep const&) + 1252
+7   libprotocols.1.dylib                0x0000000105bf8f90 protocols::rosetta_scripts::ParsedProtocol::apply(core::pose::Pose&) + 2348
+8   libprotocols.1.dylib                0x000000010596f250 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 6564
+9   libprotocols.1.dylib                0x000000010596cac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+10  libprotocols.1.dylib                0x000000010596796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+11  rosetta_scripts.default.macosclangr 0x00000001003caa7c main + 1316
+12  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/ligand_docking/GALigandDock/GALigandDock.cc
+[LINE]: 2566
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: error!  pharmacophore docking requires reference_pool to be as 'INPUT'!
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 2024.09+release.06b3cf8ad0
+[COMMIT_DATE]: 2024-02-28T21:25:09.004217
+[APPLICATION]: rosetta_scripts.default.macosclangrelease
+[MODE]: Release
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "16.0.0 (clang-1600.0.26.6)"
+[STDLIB]: libc++ version 180100
+[START_OPTIONS]
+ -in:path:database=/Users/rtviii/dev/rosetta.binary.m1.release-371/main/database/ -in:file:s=combined_complex.pdb -in:file:extra_res_fa=ANP.params -out:nstruct=10 -out:suffix=_anp_docked -out:file:scorefile=score.sc -parser:protocol=script_gemini.xml -corrections:gen_potential
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000010ad1bfb4 backtrace_string(int) + 76
+1   libutility.dylib                    0x000000010ad3bd6c utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 228
+2   libcore.5.dylib                     0x000000010a2f1918 core::pack::task::operation::OperateOnResidueSubset::parse_tag(std::__1::shared_ptr<utility::tag::Tag const>, basic::datacache::DataMap&) + 2544
+3   libcore.5.dylib                     0x000000010a30a488 core::pack::task::operation::TaskOperationFactory::newTaskOperation(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, basic::datacache::DataMap&, std::__1::shared_ptr<utility::tag::Tag const>) const + 344
+4   libprotocols.1.dylib                0x0000000107b7c574 protocols::parser::TaskOperationLoader::load_data(std::__1::shared_ptr<utility::tag::Tag const>, basic::datacache::DataMap&) const + 360
+5   libprotocols.1.dylib                0x0000000107ba2548 protocols::rosetta_scripts::RosettaScriptsParser::generate_mover_for_protocol(std::__1::shared_ptr<utility::tag::Tag const>, basic::datacache::DataMap&, utility::options::OptionCollection const&, std::__1::shared_ptr<protocols::rosetta_scripts::XmlObjects>, std::__1::shared_ptr<basic::resource_manager::ResourceManager>) + 1092
+6   libprotocols.1.dylib                0x0000000107ba1f3c protocols::rosetta_scripts::RosettaScriptsParser::generate_mover_for_protocol(std::__1::shared_ptr<utility::tag::Tag const>, utility::options::OptionCollection const&, basic::datacache::DataMap&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::shared_ptr<protocols::rosetta_scripts::XmlObjects>, std::__1::shared_ptr<basic::resource_manager::ResourceManager>) + 964
+7   libprotocols.1.dylib                0x0000000107b9bdf4 protocols::rosetta_scripts::RosettaScriptsParser::generate_mover_for_protocol(std::__1::shared_ptr<utility::tag::Tag const>, utility::options::OptionCollection const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::shared_ptr<protocols::rosetta_scripts::XmlObjects>, std::__1::shared_ptr<basic::resource_manager::ResourceManager>) + 180
+8   libprotocols.1.dylib                0x0000000107ba18a4 protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 484
+9   libprotocols.1.dylib                0x00000001078feb24 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 4728
+10  libprotocols.1.dylib                0x00000001078fcac8 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 128
+11  libprotocols.1.dylib                0x00000001078f796c protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 72
+12  rosetta_scripts.default.macosclangr 0x000000010239aa7c main + 1316
+13  dyld                                0x00000001901f8274 start + 2840
+
+[END_BACKTRACE]
+
+[FILE]: src/core/pack/task/operation/OperateOnResidueSubset.cc
+[LINE]: 180
+[START_MESSAGE]
+Failed to find ResidueSelector named 'binding_site_protein' from the Datamap from OperateOnResidueSubset::parse_tag
+
+
+File: src/core/select/residue_selector/util.cc:445
+Failed to find ResidueSelector or parse logic of 'binding_site_protein' in the DataMap.
+
+
+File: src/core/select/residue_selector/SelectorLogicParser.cc:455
+Failed to tokenize string logically combining ResidueSelectors.
+"binding_site_protein"
+Allowed names for ResidueSelectors are:
+   binding_site_neighbors
+   ligand_res
+   mg_ion
+Error message from Scanner:
+
+
+File: src/numeric/expression_parser/Arithmetic.cc:591
+[ ERROR ] UtilityExitException
+ERROR: Error in scan_identifier: Failed to find input_string in either variables_ or functions_ maps
+binding_site_protein
+An error has occurred.  ArithmeticScanner contents: 
+variable: binding_site_neighbors
+variable: ligand_res
+variable: mg_ion
+
+
+
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
